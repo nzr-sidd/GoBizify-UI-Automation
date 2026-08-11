@@ -1,0 +1,22 @@
+{
+  "name": "gobizify-ui-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:chromium": "playwright test --project=chromium",
+    "allure:generate": "rimraf allure-report && allure generate allure-results -o allure-report",
+    "allure:open": "allure open allure-report",
+    "allure:clean": "rimraf allure-results"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.1",
+    "allure": "^3.14.3",
+    "allure-playwright": "^3.10.2",
+    "rimraf": "^6.1.3"
+  }
+}
