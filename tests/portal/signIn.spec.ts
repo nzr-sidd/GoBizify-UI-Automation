@@ -1,9 +1,10 @@
 import { test, expect } from "@playwright/test";
 import { SignInPage } from "../../portal/pages/SignInPage";
 import { UserData } from "../../utils/UserData";
-import { HomePage } from "../../website/pages/HomePage";
 
-test("[Smoke] Verify client login with valid credentials", async ({ page }) => {
+test("Verify client login with valid credentials", {
+    tag: ['@smoke', '@portal', '@regression'],
+}, async ({ page }) => {
     // Arrange
     const client = UserData.getClient();
     const signInPage = new SignInPage(page);

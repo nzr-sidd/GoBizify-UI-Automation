@@ -6,6 +6,14 @@
   "scripts": {
     "test": "playwright test",
     "test:chromium": "playwright test --project=chromium",
+    "test:smoke": "playwright test --grep \"@smoke\" --project=chromium",
+    "test:smoke:crossbrowser": "playwright test --grep \"@smoke\" --project=chromium --project=firefox",
+    "test:e2e": "playwright test --grep \"@e2e\" --project=chromium",
+    "test:e2e:crossbrowser": "playwright test --grep \"@e2e\" --project=chromium --project=firefox",
+    "test:sanity": "playwright test --grep \"@sanity\" --project=chromium",
+    "test:sanity:crossbrowser": "playwright test --grep \"@sanity\" --project=chromium --project=firefox",
+    "test:regression": "playwright test --grep \"@regression\" --project=chromium",
+    "test:regression:crossbrowser": "playwright test --grep \"@regression\" --project=chromium --project=firefox",
     "allure:generate": "rimraf allure-report && allure generate allure-results -o allure-report",
     "allure:open": "allure open allure-report",
     "allure:clean": "rimraf allure-results"
@@ -14,7 +22,7 @@
   "type": "commonjs",
   "devDependencies": {
     "@playwright/test": "^1.61.1",
-    "@types/node": "^26.1.1",
+    "@types/node": "^26.2.0",
     "allure": "^3.14.3",
     "allure-playwright": "^3.10.2",
     "rimraf": "^6.1.3"

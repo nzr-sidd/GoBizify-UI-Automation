@@ -3,7 +3,7 @@ import { Page } from "@playwright/test";
 import { BasePage } from "../../core/BasePage";
 import { Header } from "../components/navigation/Header";
 import { CookieBanner } from "../components/common/CookieBanner";
-import { WhatsAppChatWidget } from "../components/common/WhatsappChatWidget";
+import { WhatsAppChatWidget } from "../components/common/WhatsAppChatWidget";
 import { Footer } from "../components/navigation/Footer";
 import { SignInPage } from "../../portal/pages/SignInPage";
 import { currentEnvironment } from "../../config/currentEnvironment";

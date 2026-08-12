@@ -2,7 +2,9 @@ import { test } from "@playwright/test";
 import { UserData } from "../../utils/UserData";
 import { HomePage } from "../../website/pages/HomePage";
 
-test("[E2E] Verify client login from website to choice page", async ({ page }) => {
+test("Verify client login from website to choice page", {
+    tag: ['@smoke', '@e2e', '@website', '@portal', '@regression'],
+}, async ({ page }) => {
     // Arrange
     const client = UserData.getClient();
     const homePage = new HomePage(page);
@@ -14,4 +16,4 @@ test("[E2E] Verify client login from website to choice page", async ({ page }) =
 
     // Assert: Verify Choice Page
     await choicePage.verifyChoicePageIsDisplayed();
-})
+});

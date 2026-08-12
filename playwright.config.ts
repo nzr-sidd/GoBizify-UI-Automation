@@ -65,7 +65,17 @@ export default defineConfig({
 
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      use: {
+        ...devices['Desktop Firefox'],
+        // 1. FIXES THE ERROR: Clears out device scale conflicts
+        deviceScaleFactor: undefined,
+        // 2. Clear default viewport bounds
+        viewport: null,
+        // 3. Inject the native maximization flag to Chromium binary
+        launchOptions: {
+          args: ['--start-maximized'],
+        },
+      },
     },
 
     {
