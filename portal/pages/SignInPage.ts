@@ -15,7 +15,7 @@ export class SignInPage extends BasePage {
     // Private Readonly Locators
     private readonly emailInput = this.page.locator("//input[@type='email']");
     private readonly passwordInput = this.page.locator("//input[@type='password']");
-    private readonly signInButton = this.page.locator("//button[@type='submit']");
+    private readonly signInButton = this.page.locator("//button[@type='submit1']");
 
     // Public Business Methods
     public async open(): Promise<void> {
