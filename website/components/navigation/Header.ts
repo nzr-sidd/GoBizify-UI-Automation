@@ -4,9 +4,9 @@ import { BasePage } from "../../../core/BasePage";
 import { SignInPage } from "../../../portal/pages/SignInPage";
 
 // Class Declaration
-export class Header extends BasePage{
+export class Header extends BasePage {
     // Constructor
-    constructor(page: Page){
+    constructor(page: Page) {
         super(page);
     }
     // Private Readonly Locators
@@ -21,7 +21,7 @@ export class Header extends BasePage{
     private readonly blogs = this.page.locator("");
 
     // Public Business Methods
-    public async clickLogin():Promise<SignInPage>{
+    public async clickLogin(): Promise<SignInPage> {
         await this.click(this.login);
         return new SignInPage(this.page);
     }

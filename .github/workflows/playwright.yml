@@ -28,10 +28,10 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Check application availability
+      - name: Preflight - Check application availability
         run: |
-          curl -I -L --max-time 30 https://dev.gobizify.in/
-          curl -I -L --max-time 30 https://dev-portal.gobizify.in/
+          curl -fI -L --max-time 30 https://dev.gobizify.in/
+          curl -fI -L --max-time 30 https://dev-portal.gobizify.in/
 
       - name: Run Smoke tests
         if: github.event_name == 'pull_request'

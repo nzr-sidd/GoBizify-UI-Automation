@@ -2,6 +2,8 @@ import { defineConfig, devices } from '@playwright/test';
 
 // See https://playwright.dev/docs/test-configuration.
 
+const desktopViewport = { width: 1920, height: 1080 };
+
 export default defineConfig({
   testDir: './tests',
   // Run tests in files in parallel
@@ -46,10 +48,15 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome'],
         deviceScaleFactor: undefined,
-        viewport: null,
-        launchOptions: {
-          args: ['--start-maximized'],
-        },
+        viewport: process.env.CI
+          ? { width: 1920, height: 1080 }
+          : null,
+
+        launchOptions: process.env.CI
+          ? undefined
+          : {
+            args: ['--start-maximized'],
+          },
       },
     },
     {
@@ -57,12 +64,15 @@ export default defineConfig({
       use: {
         ...devices['Desktop Firefox'],
         deviceScaleFactor: undefined,
-        viewport: null,
+        viewport: desktopViewport,
       },
     },
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      use: {
+        ...devices['Desktop Safari'],
+        viewport: desktopViewport,
+      },
     },
   ],
 });
