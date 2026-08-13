@@ -45,6 +45,10 @@ jobs:
         if: github.event_name == 'schedule'
         run: npm run test:regression:all-browsers
 
+      - name: Generate Allure report
+        if: ${{ always() }}
+        run: npm run allure:generate
+
       - name: Upload Playwright test artifacts
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
@@ -67,4 +71,12 @@ jobs:
         with:
           name: allure-results
           path: allure-results/
+          retention-days: 30
+
+      - name: Upload Allure report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report/
           retention-days: 30
