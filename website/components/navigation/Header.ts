@@ -11,7 +11,7 @@ export class Header extends BasePage {
     }
     // Private Readonly Locators
     private readonly logo = this.page.locator("");
-    private readonly login = this.page.getByText('Login');
+    private readonly login = this.page.getByRole('button', { name: 'Login' });
     private readonly aboutUs = this.page.locator("");
     private readonly registrationsComplianceMenu = this.page.locator("");
     private readonly taxationMenu = this.page.locator("");
