@@ -1,17 +1,16 @@
-import { test, expect } from "@playwright/test";
-import { SignInPage } from "../../portal/pages/SignInPage";
-import { UserData } from "../../utils/UserData";
+import { test } from "../../fixtures/test";
 
 test("Verify client login with valid credentials", {
     tag: ['@smoke', '@portal', '@regression'],
-}, async ({ page }) => {
+}, async ({ signInPage, clientUser }) => {
     // Arrange
-    const client = UserData.getClient();
-    const signInPage = new SignInPage(page);
 
     // Act
     await signInPage.open();
-    const choicePage = await signInPage.signIn(client.email, client.password);
+    const choicePage = await signInPage.signIn(
+        clientUser.email,
+        clientUser.password
+    );
 
     // Assert: Verify Choice Page
     await choicePage.verifyChoicePageIsDisplayed();

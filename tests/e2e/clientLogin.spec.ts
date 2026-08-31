@@ -1,18 +1,18 @@
-import { test } from "@playwright/test";
+import { test } from "../../fixtures/test";
 import { UserData } from "../../utils/UserData";
-import { HomePage } from "../../website/pages/HomePage";
 
 test("Verify client login from website to choice page", {
     tag: ['@smoke', '@e2e', '@website', '@portal', '@regression'],
-}, async ({ page }) => {
+}, async ({ homePage, clientUser }) => {
     // Arrange
-    const client = UserData.getClient();
-    const homePage = new HomePage(page);
 
     // Act
     await homePage.open();
     const signInPage = await homePage.clickLogin();
-    const choicePage = await signInPage.signIn(client.email, client.password);
+    const choicePage = await signInPage.signIn(
+        clientUser.email,
+        clientUser.password
+    );
 
     // Assert: Verify Choice Page
     await choicePage.verifyChoicePageIsDisplayed();

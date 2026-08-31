@@ -1,8 +1,9 @@
 import { defineConfig, devices } from '@playwright/test';
 
-// See https://playwright.dev/docs/test-configuration.
-
-const desktopViewport = { width: 1920, height: 1080 };
+const desktopViewport = {
+  width: 1920,
+  height: 1080,
+};
 
 export default defineConfig({
   testDir: './tests',
@@ -51,12 +52,27 @@ export default defineConfig({
   // Browser projects
   projects: [
     {
+      name: 'portal-auth',
+      testMatch: /portalAuth\.setup\.ts/,
+    },
+    {
+      name: 'portal-authenticated-chromium',
+      dependencies: ['portal-auth'],
+      testMatch: /portal\/authenticated\/.*\.spec\.ts/,
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: 'playwright/.auth/portal-user.json',
+        deviceScaleFactor: undefined,
+        viewport: desktopViewport,
+      },
+    },
+    {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
         deviceScaleFactor: undefined,
         viewport: process.env.CI
-          ? { width: 1920, height: 1080 }
+          ? desktopViewport
           : null,
 
         launchOptions: process.env.CI
