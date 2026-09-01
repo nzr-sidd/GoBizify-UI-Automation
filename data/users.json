@@ -1,14 +1,11 @@
 {
   "client": {
-    "email": "test1@t.cc",
-    "password": "Qa@123"
+    "email": "test1@t.cc"
   },
   "admin": {
-    "email": "dev@gmail.com",
-    "password": "devdev"
+    "email": "dev@gmail.com"
   },
   "internal": {
-    "email": "test@.cc",
-    "password": "test"
+    "email": "test@.cc"
   }
 }
