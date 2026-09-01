@@ -15,6 +15,11 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
 
+    env:
+      CLIENT_PASSWORD: ${{ secrets.CLIENT_PASSWORD }}
+      ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+      INTERNAL_PASSWORD: ${{ secrets.INTERNAL_PASSWORD }}
+
     steps:
       - uses: actions/checkout@v4
 
