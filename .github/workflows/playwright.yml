@@ -10,6 +10,8 @@ on:
   schedule:
     - cron: "30 21 * * *"
 
+  workflow_dispatch:
+
 jobs:
   test:
     timeout-minutes: 60
